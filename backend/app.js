@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
-// const jwt = require('jsonwebtoken');
 
 const routes = require('./routes/index');
 const errorHandler = require('./middlewares/errorHandler');
@@ -40,6 +39,13 @@ mongoose.connect(DB_URL, {
 });
 
 app.use(requestLogger); // подключаем логгер запросов
+
+// краш-тест
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 // подключаем роуты
 app.use(routes);
