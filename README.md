@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 84.201.133.63
 
-Frontend https://...
+Frontend [https://mymesto.nomoredomains.work](https://mymesto.nomoredomains.work)
 
-Backend https://...
+Backend [https://api.mymesto.nomoredomains.work](https://api.mymesto.nomoredomains.work)

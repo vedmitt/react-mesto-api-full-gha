@@ -9,6 +9,7 @@ const { errors } = require('celebrate');
 const routes = require('./routes/index');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+// const mycors = require('./middlewares/cors');
 
 require('dotenv').config();
 
@@ -29,9 +30,6 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(cors({ credentials: true, origin: 'https://mymesto.nomoredomains.work' }));
-// app.use(cors({ credentials: true, origin: 'http://localhost:3001' }));
-
 // подключаемся к серверу mongo
 mongoose.connect(DB_URL, {
   useNewUrlParser: true,
@@ -46,6 +44,13 @@ app.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
+
+// CORS обходы
+// app.use(cors({ credentials: true, origin: '*' }));
+// app.use(cors({ credentials: true, origin: 'https://mymesto.nomoredomains.work' }));
+// app.use(cors({ credentials: true, origin: 'http://localhost:3001' }));
+app.use(cors());
+// app.use(mycors);
 
 // подключаем роуты
 app.use(routes);

@@ -94,6 +94,5 @@ export const api = new Api({
     baseUrl: `${serverUrl}`,
     headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://api.mymesto.nomoredomains.work'
     }
 }); 
