@@ -9,7 +9,7 @@ class Api {
 
     _request(url, options) {
         return fetch(url, {
-            // credentials:  'include',
+            credentials:  'include',
             ...options
         })
             .then(res => {

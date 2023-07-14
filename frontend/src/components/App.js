@@ -36,6 +36,7 @@ function App() {
   React.useEffect(() => {
     auth.validateToken()
       .then((data) => {
+        console.log(data);
         if (data) {
           setEmail(data.data.email);
         }

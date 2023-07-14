@@ -7,6 +7,11 @@ const handleAuthError = (next) => {
 };
 
 module.exports = (req, res, next) => {
+  // const token = jwt.sign(
+  //   { _id: req.cookies.jwt },
+  //   NODE_ENV !== 'production' ? JWT_SECRET : 'dev-secret',
+  // );
+
   const token = req.cookies.jwt;
   if (!token) {
     return handleAuthError(next);

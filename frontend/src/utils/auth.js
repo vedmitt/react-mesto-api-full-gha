@@ -40,9 +40,9 @@ export const login = (password, email) => {
   });
 };
 
-export const validateToken = (jwt) => {
+export const validateToken = () => {
   return _request(`${serverUrl}/users/me`, {
-    // credentials: 'include',
+    credentials: 'include',
     method: 'GET'
   });
 };
