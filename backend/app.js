@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
@@ -9,7 +8,7 @@ const { errors } = require('celebrate');
 const routes = require('./routes/index');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// const mycors = require('./middlewares/cors');
+const cors = require('./middlewares/cors');
 
 require('dotenv').config();
 
@@ -46,11 +45,7 @@ app.get('/crash-test', () => {
 });
 
 // CORS обходы
-// app.use(cors({ credentials: true, origin: '*' }));
-// app.use(cors({ credentials: true, origin: 'https://mymesto.nomoredomains.work' }));
-// app.use(cors({ credentials: true, origin: 'http://localhost:3001' }));
-app.use(cors());
-// app.use(mycors);
+app.use(cors);
 
 // подключаем роуты
 app.use(routes);
