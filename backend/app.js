@@ -5,12 +5,20 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
+// const jwt = require('jsonwebtoken');
 
 const routes = require('./routes/index');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
+require('dotenv').config();
+
 const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
+
+if (process.env.NODE_ENV !== 'production') {
+  process.env.NODE_ENV = 'dev';
+  process.env.JWT_SECRET = 'dev-secret';
+}
 
 const app = express();
 
