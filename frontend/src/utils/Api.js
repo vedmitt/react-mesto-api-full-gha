@@ -8,11 +8,10 @@ class Api {
     }
 
     _request(url, options) {
-        return fetch(url, options)
-        //     {
-        //     credentials: 'include',
-        //     ...options
-        // })
+        return fetch(url, {
+            credentials: 'include',
+            ...options
+        })
             .then(res => {
                 return this._getResponseData(res);
             })
@@ -27,14 +26,12 @@ class Api {
 
     getUserInfo() {
         return this._request(`${this._baseUrl}/users/me`, {
-            credentials: 'include',
             headers: this._headers
         })
     }
 
     updateUserInfo(userInfo) {
         return this._request(`${this._baseUrl}/users/me`, {
-            credentials: 'include',
             headers: this._headers,
             method: 'PATCH',
             body: JSON.stringify(userInfo)
@@ -43,7 +40,6 @@ class Api {
 
     updateAvatar(url) {
         return this._request(`${this._baseUrl}/users/me/avatar`, {
-            credentials: 'include',
             headers: this._headers,
             method: 'PATCH',
             body: JSON.stringify(url)
@@ -52,14 +48,12 @@ class Api {
 
     getInitialCards() {
         return this._request(`${this._baseUrl}/cards`, {
-            credentials: 'include',
             headers: this._headers
         })
     }
 
     addCard(card) {
         return this._request(`${this._baseUrl}/cards`, {
-            credentials: 'include',
             headers: this._headers,
             method: 'POST',
             body: JSON.stringify(card)
@@ -68,7 +62,6 @@ class Api {
 
     removeCard(cardId) {
         return this._request(`${this._baseUrl}/cards/${cardId}`, {
-            credentials: 'include',
             headers: this._headers,
             method: 'DELETE'
         })
@@ -76,7 +69,6 @@ class Api {
 
     addLike(cardId) {
         return this._request(`${this._baseUrl}/cards/${cardId}/likes`, {
-            credentials: 'include',
             headers: this._headers,
             method: 'PUT'
         })
@@ -84,7 +76,6 @@ class Api {
 
     removeLike(cardId) {
         return this._request(`${this._baseUrl}/cards/${cardId}/likes`, {
-            credentials: 'include',
             headers: this._headers,
             method: 'DELETE'
         })

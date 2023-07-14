@@ -22,7 +22,8 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(cors({ credentials: true, origin: 'http://mymesto.nomoredomains.work' }));
+app.use(cors({ credentials: true, origin: 'https://mymesto.nomoredomains.work' }));
+// app.use(cors({ credentials: true, origin: 'http://localhost:3001' }));
 
 // подключаемся к серверу mongo
 mongoose.connect(DB_URL, {
