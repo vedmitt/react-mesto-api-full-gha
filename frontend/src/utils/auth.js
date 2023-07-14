@@ -42,7 +42,7 @@ export const login = (password, email) => {
 
 export const validateToken = (jwt) => {
   return _request(`${serverUrl}/users/me`, {
-    credentials: 'include',
+    // credentials: 'include',
     method: 'GET'
   });
 };
