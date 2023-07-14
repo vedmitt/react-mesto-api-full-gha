@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.133.63
+IP 84.201.133.63
 
 Frontend [https://mymesto.nomoredomains.work](https://mymesto.nomoredomains.work)
 

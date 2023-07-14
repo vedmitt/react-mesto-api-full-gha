@@ -49,7 +49,7 @@ app.get('/crash-test', () => {
 // app.use(cors({ credentials: true, origin: '*' }));
 // app.use(cors({ credentials: true, origin: 'https://mymesto.nomoredomains.work' }));
 // app.use(cors({ credentials: true, origin: 'http://localhost:3001' }));
-app.use(cors());
+// app.use(cors());
 // app.use(mycors);
 
 // подключаем роуты
