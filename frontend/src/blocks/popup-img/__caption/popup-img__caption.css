@@ -1,0 +1,18 @@
+.popup-img__caption {
+    grid-area: cap;
+    max-width: 75vw;
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FFFFFF;
+    margin: 10px 40px 15px;
+    padding: 0;
+}
+
+@media screen and (max-width: 500px) {
+    .popup-img__caption {
+        margin: 10px 0 11px;
+    }
+}

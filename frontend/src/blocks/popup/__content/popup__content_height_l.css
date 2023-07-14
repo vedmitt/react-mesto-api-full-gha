@@ -1,0 +1,9 @@
+.popup__content_height_l {
+    height: 330px;
+}
+
+@media screen and (max-width: 500px) {
+    .popup__content_height_l {
+        height: 322px;
+    }
+}

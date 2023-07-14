@@ -1,0 +1,28 @@
+.popup__container {
+    position: fixed;
+    top: calc(50% - 370px/2);
+    left: calc(50% - 470px/2);
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+    "close close"
+    "content gap";
+    gap: 8px;
+    width: 470px;
+    /* height: 370px; */
+}
+
+@media screen and (max-width: 500px) {
+    .popup__container {
+        width: 288px;
+        left: calc(50% - 288px/2);
+        grid-template-columns: repeat(1, auto);
+        grid-template-rows: repeat(2, auto);
+        grid-template-areas:
+        "close"
+        "content";
+        row-gap: 16px;
+        column-gap: 0;
+    }
+}

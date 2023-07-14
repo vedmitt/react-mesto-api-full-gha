@@ -1,0 +1,15 @@
+.popup-img {
+    position: fixed;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+    "close close"
+    "fig gap"
+    "cap gap";
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    align-content: center;
+    justify-content: center;
+}

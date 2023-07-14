@@ -1,0 +1,13 @@
+.popup-img__image {
+    grid-area: fig;
+    max-width: 75vw;
+    max-height: 75vh;
+    margin: 8px 40px 0;
+    justify-self: center;
+}
+
+@media screen and (max-width: 500px) {
+    .popup-img__image {
+        margin: 16px 0 0;
+    }
+}
