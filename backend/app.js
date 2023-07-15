@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
@@ -26,8 +25,6 @@ app.disable('x-powered-by');
 
 app.use(cookieParser());
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 // подключаемся к серверу mongo
 mongoose.connect(DB_URL, {

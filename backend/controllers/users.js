@@ -57,7 +57,7 @@ module.exports.login = (req, res, next) => {
           httpOnly: true,
           sameSite: true,
         });
-      res.send({ jwt: token });
+      res.send({ message: 'токен создан и записан в куки' });
     })
     .catch(next);
 };

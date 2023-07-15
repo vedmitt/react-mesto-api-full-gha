@@ -33,13 +33,55 @@ function App() {
 
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isDeleteCardPopupOpen || selectedCard || isInfoTooltipOpen
 
+  const handleRegisterUser = (password, email) => {
+    auth.register(password, email)
+      .then(res => {
+        setMessage({ type: 'success', text: 'Вы успешно зарегистрировались!' });
+      }).catch(err => {
+        setMessage({ type: 'error', text: 'Что-то пошло не так! Попробуйте ещё раз.' });
+      }).finally(() => {
+        setInfoTooltipOpen(true);
+      });
+  }
+  
+  const handleLoginUser = (password, email) => {
+    auth.login(password, email)
+      .then(res => {
+        setEmail(email);
+      }).catch(err => {
+        setMessage({ type: 'error', text: 'Что-то пошло не так! Попробуйте ещё раз.' });
+        setInfoTooltipOpen(true);
+      });
+  }
+
+  const handleSignOut = () => {
+    auth.logout()
+      .then(res => {
+        setEmail(null);
+      }).catch(err => {
+        setMessage({ type: 'error', text: 'Не получилось выйти из профиля' });
+      });
+  }
+  
   React.useEffect(() => {
     auth.validateToken()
       .then((data) => {
-        console.log(data);
         if (data) {
           setEmail(data.data.email);
         }
+      })
+      .catch(err => {
+        console.error(err);
+      })
+  }, []);
+
+  React.useEffect(() => {
+    Promise.all(
+      [api.getUserInfo(),
+      api.getInitialCards()])
+      .then(([userData, cards]) => {
+        setCurrentUser(userData?.data);
+        setCards(cards?.data);
       })
       .catch(err => {
         console.error(err);
@@ -59,19 +101,6 @@ function App() {
       }
     }
   }, [isOpen])
-
-  React.useEffect(() => {
-    Promise.all(
-      [api.getUserInfo(),
-      api.getInitialCards()])
-      .then(([userData, cards]) => {
-        setCurrentUser(userData?.data);
-        setCards(cards?.data);
-      })
-      .catch(err => {
-        console.error(err);
-      })
-  }, []);
 
   const handleEditProfileClick = () => {
     setEditProfilePopupOpen(true);
@@ -186,33 +215,6 @@ function App() {
     setInfoTooltipOpen(false);
     setSelectedCard(null);
     setMessage({ type: '', text: '' });
-  }
-
-  const handleRegisterUser = (password, email) => {
-    auth.register(password, email)
-      .then(res => {
-        setMessage({ type: 'success', text: 'Вы успешно зарегистрировались!' });
-      }).catch(err => {
-        setMessage({ type: 'error', text: 'Что-то пошло не так! Попробуйте ещё раз.' });
-      }).finally(() => {
-        setInfoTooltipOpen(true);
-      });
-  }
-
-  const handleLoginUser = (password, email) => {
-    auth.login(password, email)
-      .then(res => {
-        document.cookie = `jwt=${res.jwt}`;
-        setEmail(email);
-      }).catch(err => {
-        setMessage({ type: 'error', text: 'Что-то пошло не так! Попробуйте ещё раз.' });
-        setInfoTooltipOpen(true);
-      });
-  }
-
-  const handleSignOut = () => {
-    document.cookie = 'jwt='
-    setEmail(null);
   }
 
   return (

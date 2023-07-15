@@ -31,6 +31,7 @@ export const register = (password, email) => {
 
 export const login = (password, email) => {
   return _request(`${serverUrl}/signin`, {
+    credentials: 'include',
     headers: {
       "Accept": "application/json",
       ...headers
@@ -39,6 +40,17 @@ export const login = (password, email) => {
     body: JSON.stringify({ password, email })
   });
 };
+
+export const logout = () => {
+  return _request(`${serverUrl}/signout`, {
+    credentials: 'include',
+    headers: {
+      "Accept": "application/json",
+      ...headers
+    },
+    method: 'GET'
+  });
+}
 
 export const validateToken = () => {
   return _request(`${serverUrl}/users/me`, {
